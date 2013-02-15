@@ -1,0 +1,19 @@
+%h1 Listing checkbox_groups
+
+%table
+  %tr
+    %th Title
+    %th
+    %th
+    %th
+
+  - @checkbox_groups.each do |checkbox_group|
+    %tr
+      %td= checkbox_group.title
+      %td= link_to 'Show', checkbox_group
+      %td= link_to 'Edit', edit_checkbox_group_path(checkbox_group)
+      %td= link_to 'Destroy', checkbox_group, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Checkbox group', new_checkbox_group_path

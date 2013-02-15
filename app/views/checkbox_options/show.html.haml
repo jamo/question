@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @checkbox_option.title
+
+= link_to 'Edit', edit_checkbox_option_path(@checkbox_option)
+\|
+= link_to 'Back', checkbox_options_path

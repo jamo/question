@@ -1,0 +1,19 @@
+%h1 Listing checkbox_options
+
+%table
+  %tr
+    %th Title
+    %th
+    %th
+    %th
+
+  - @checkbox_options.each do |checkbox_option|
+    %tr
+      %td= checkbox_option.title
+      %td= link_to 'Show', checkbox_option
+      %td= link_to 'Edit', edit_checkbox_option_path(checkbox_option)
+      %td= link_to 'Destroy', checkbox_option, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Checkbox option', new_checkbox_option_path

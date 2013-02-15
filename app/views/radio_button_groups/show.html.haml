@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @radio_button_group.title
+
+= link_to 'Edit', edit_radio_button_group_path(@radio_button_group)
+\|
+= link_to 'Back', radio_button_groups_path

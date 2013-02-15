@@ -1,0 +1,13 @@
+= form_for @radio_button_group do |f|
+  - if @radio_button_group.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@radio_button_group.errors.count, "error")} prohibited this radio_button_group from being saved:"
+      %ul
+        - @radio_button_group.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .actions
+    = f.submit 'Save'

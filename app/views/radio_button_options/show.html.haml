@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @radio_button_option.title
+
+= link_to 'Edit', edit_radio_button_option_path(@radio_button_option)
+\|
+= link_to 'Back', radio_button_options_path

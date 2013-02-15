@@ -1,0 +1,19 @@
+%h1 Listing radio_button_groups
+
+%table
+  %tr
+    %th Title
+    %th
+    %th
+    %th
+
+  - @radio_button_groups.each do |radio_button_group|
+    %tr
+      %td= radio_button_group.title
+      %td= link_to 'Show', radio_button_group
+      %td= link_to 'Edit', edit_radio_button_group_path(radio_button_group)
+      %td= link_to 'Destroy', radio_button_group, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Radio button group', new_radio_button_group_path

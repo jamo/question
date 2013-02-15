@@ -1,0 +1,19 @@
+%h1 Listing text_questions
+
+%table
+  %tr
+    %th Title
+    %th
+    %th
+    %th
+
+  - @text_questions.each do |text_question|
+    %tr
+      %td= text_question.title
+      %td= link_to 'Show', text_question
+      %td= link_to 'Edit', edit_text_question_path(text_question)
+      %td= link_to 'Destroy', text_question, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Text question', new_text_question_path

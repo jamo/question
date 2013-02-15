@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @checkbox_group.title
+
+= link_to 'Edit', edit_checkbox_group_path(@checkbox_group)
+\|
+= link_to 'Back', checkbox_groups_path
