@@ -1,19 +1,23 @@
-%h1 Listing checkbox_options
-
-%table
-  %tr
-    %th Title
-    %th
-    %th
-    %th
-
-  - @checkbox_options.each do |checkbox_option|
+- model_class = CheckboxOption
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%table.table.table-striped
+  %thead
     %tr
-      %td= checkbox_option.title
-      %td= link_to 'Show', checkbox_option
-      %td= link_to 'Edit', edit_checkbox_option_path(checkbox_option)
-      %td= link_to 'Destroy', checkbox_option, method: :delete, data: { confirm: 'Are you sure?' }
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:checkbox_group_id)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @checkbox_options.each do |checkbox_option|
+      %tr
+        %td= link_to checkbox_option.id, checkbox_option_path(checkbox_option)
+        %td= checkbox_option.title
+        %td= checkbox_option.checkbox_group_id
+        %td=l checkbox_option.created_at
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_checkbox_option_path(checkbox_option), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), checkbox_option_path(checkbox_option), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
-%br
-
-= link_to 'New Checkbox option', new_checkbox_option_path
+= link_to t('.new', :default => t("helpers.links.new")), new_checkbox_option_path, :class => 'btn btn-primary'

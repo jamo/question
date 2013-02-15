@@ -1,19 +1,23 @@
-%h1 Listing radio_button_options
-
-%table
-  %tr
-    %th Title
-    %th
-    %th
-    %th
-
-  - @radio_button_options.each do |radio_button_option|
+- model_class = RadioButtonOption
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%table.table.table-striped
+  %thead
     %tr
-      %td= radio_button_option.title
-      %td= link_to 'Show', radio_button_option
-      %td= link_to 'Edit', edit_radio_button_option_path(radio_button_option)
-      %td= link_to 'Destroy', radio_button_option, method: :delete, data: { confirm: 'Are you sure?' }
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:radio_button_group_id)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @radio_button_options.each do |radio_button_option|
+      %tr
+        %td= link_to radio_button_option.id, radio_button_option_path(radio_button_option)
+        %td= radio_button_option.title
+        %td= radio_button_option.radio_button_group_id
+        %td=l radio_button_option.created_at
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_radio_button_option_path(radio_button_option), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), radio_button_option_path(radio_button_option), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
-%br
-
-= link_to 'New Radio button option', new_radio_button_option_path
+= link_to t('.new', :default => t("helpers.links.new")), new_radio_button_option_path, :class => 'btn btn-primary'

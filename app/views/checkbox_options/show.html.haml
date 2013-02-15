@@ -1,9 +1,17 @@
-%p#notice= notice
+- model_class = CheckboxOption
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
 
 %p
-  %b Title:
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
   = @checkbox_option.title
+%p
+  %strong= model_class.human_attribute_name(:checkbox_group_id) + ':'
+  %br
+  = @checkbox_option.checkbox_group_id
 
-= link_to 'Edit', edit_checkbox_option_path(@checkbox_option)
-\|
-= link_to 'Back', checkbox_options_path
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), checkbox_options_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_checkbox_option_path(@checkbox_option), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), checkbox_option_path(@checkbox_option), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

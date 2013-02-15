@@ -1,13 +1,12 @@
-= form_for @radio_button_group do |f|
-  - if @radio_button_group.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@radio_button_group.errors.count, "error")} prohibited this radio_button_group from being saved:"
-      %ul
-        - @radio_button_group.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .actions
-    = f.submit 'Save'
+= form_for @radio_button_group, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :title, :class => 'control-label'
+    .controls
+      = f.text_field :title, :class => 'text_field'
+  .control-group
+    = f.label :base_question_id, :class => 'control-label'
+    .controls
+      = f.number_field :base_question_id, :class => 'number_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), radio_button_groups_path, :class => 'btn'

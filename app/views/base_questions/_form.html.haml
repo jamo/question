@@ -3,6 +3,10 @@
     = f.label :title, :class => 'control-label'
     .controls
       = f.text_field :title, :class => 'text_field'
+  .control-group
+    =button_to 'Add RadioButtonQuestion'
+    =button_to 'Add CheckBoxQuestion'
+    =button_to 'Add TextAreaQuestion'
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), base_questions_path, :class => 'btn'
