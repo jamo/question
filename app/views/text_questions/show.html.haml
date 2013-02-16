@@ -4,6 +4,6 @@
   %b Title:
   = @text_question.title
 
-= link_to 'Edit', edit_text_question_path(@text_question)
+= link_to 'Edit', base_question_edit_text_question_path(@base_question, @text_question)
 \|
-= link_to 'Back', text_questions_path
+= link_to 'Back', base_question_text_questions_path(@base_queston)

@@ -1,21 +1,14 @@
 Question::Application.routes.draw do
-  resources :radio_button_options
+  resources :base_questions do 
+    resources :text_questions
 
-
-  resources :radio_button_groups
-
-
-  resources :checkbox_options
-
-
-  resources :checkbox_groups
-
-
-  resources :text_questions
-
-
-  resources :base_questions
-
+    resources :radio_button_groups do
+      resources :radio_button_options
+    end
+    resources :checkbox_groups do
+      resources :checkbox_options
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

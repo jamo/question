@@ -4,9 +4,10 @@
     .controls
       = f.text_field :title, :class => 'text_field'
   .control-group
-    =button_to 'Add RadioButtonQuestion'
-    =button_to 'Add CheckBoxQuestion'
-    =button_to 'Add TextAreaQuestion'
+    =button_to 'Add RadioButtonQuestion', new_base_question_radio_button_group_path(@base_question), method: :get
+    =button_to 'Add CheckBoxQuestion', new_base_question_checkbox_group_path(@base_question), method: :get
+    =button_to 'Add TextAreaQuestion', new_base_question_text_question_path(@base_question), method: :get
+
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), base_questions_path, :class => 'btn'
